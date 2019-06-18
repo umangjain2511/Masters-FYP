@@ -23,8 +23,8 @@
                         <h:commandButton action="ass_job" value="Assigned Jobs"
                                          rendered="#{providerMBean.correct}"/>
                         <h:commandButton action="sh_job_app" value="Show job applicants"
-                                         rendered="#{providerMBean.correct}"/>                        
-                        <h:commandButton action="employer_page" value="Try again"
+                                         rendered="#{providerMBean.correct}"/>                      
+                        <h:commandButton action="index" value="Try again"
                                          rendered="#{not providerMBean.correct}"/>
                         <h:commandButton action="index" value="Logout">
                             <f:actionListener binding="#{providerMBean.logout()}" />

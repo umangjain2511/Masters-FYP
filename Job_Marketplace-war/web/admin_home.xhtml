@@ -26,7 +26,7 @@
                                          rendered="#{adminMBean.correct}"/>
                         <h:commandButton action="list_all_jobs" value="Show all jobs"
                                          rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="admin_page" value="Try again"
+                        <h:commandButton action="index" value="Try again"
                                          rendered="#{not adminMBean.correct}"/>
                         <h:commandButton action="index" value="Logout">
                             <f:actionListener binding="#{adminMBean.logout()}" />

@@ -15,6 +15,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -110,8 +111,8 @@ public class ProviderMBean implements Serializable {
 
     public void setCorrect(boolean correct) {
         this.correct = correct;
-    }        
-       
+    }     
+     
     public List<Provider> searchProviders() {
         return provBean.searchProviders();                
     }
@@ -120,6 +121,8 @@ public class ProviderMBean implements Serializable {
         String[] data = provBean.getProviderName(username,password);
         if(data[1]=="correct"){
             correct=true;
+            HttpSession session = SessionUtils.getSession();
+	    session.setAttribute("username", username);
         }
         else{
             correct=false;
@@ -160,6 +163,8 @@ public class ProviderMBean implements Serializable {
     public void logout() {
         username = "";
         password = "";
+        HttpSession session = SessionUtils.getSession();
+	session.invalidate();
     }
     
     public List<Jobs> providerAssJob() {

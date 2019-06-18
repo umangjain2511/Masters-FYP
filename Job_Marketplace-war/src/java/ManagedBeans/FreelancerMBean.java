@@ -14,6 +14,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -151,6 +152,8 @@ public class FreelancerMBean implements Serializable {
         String[] data = freeBean.getFreelancerName(username,password);
         if(data[1]=="correct"){
             correct=true;
+            HttpSession session = SessionUtils.getSession();
+	    session.setAttribute("username", username);
         }
         else{
             correct=false;
@@ -188,6 +191,8 @@ public class FreelancerMBean implements Serializable {
     public void logout() {
         username = "";
         password = "";
+        HttpSession session = SessionUtils.getSession();
+	session.invalidate();
     }
     
     public List<Jobs> singleJob() {

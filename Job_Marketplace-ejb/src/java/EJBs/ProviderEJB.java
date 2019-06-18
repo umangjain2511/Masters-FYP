@@ -123,5 +123,5 @@ public class ProviderEJB implements ProviderRemoteEJB {
         query4.setParameter("uname", uname);
         int rowsUpdated3 = query4.executeUpdate();
     }
-     
+    
 }

@@ -10,6 +10,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -67,6 +68,8 @@ public class AdminMBean implements Serializable {
         String[] data = adm.searchAdminName(username,password);
         if(data[1]=="correct"){
             correct=true;
+            HttpSession session = SessionUtils.getSession();
+	    session.setAttribute("username", username);
         }
         else{
             correct=false;
@@ -78,6 +81,8 @@ public class AdminMBean implements Serializable {
     public void logout(){
         username = "";
         password = "";
+        HttpSession session = SessionUtils.getSession();
+	session.invalidate();
     }
     
 }
