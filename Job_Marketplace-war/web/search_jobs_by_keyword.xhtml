@@ -10,9 +10,12 @@
         <ui:composition template="/templates/freelancerTemplate.xhtml">
             <ui:define name="content">
                 <h1>Jobs containing #{jobMBean.search}</h1>
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not freelancerMBean.correct}"/>
                 <h3>
                     <h:dataTable value="#{jobMBean.searchJobs()}" 
-                                 var="jobs" border="1" cellpadding="10">
+                                 var="jobs" border="1" cellpadding="10"
+                                 rendered="#{freelancerMBean.correct}" >
                         <h:column>
                             <f:facet name="header">ID</f:facet>
                                 #{jobs.id}

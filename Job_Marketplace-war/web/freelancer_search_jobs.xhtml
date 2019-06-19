@@ -10,11 +10,14 @@
             <ui:define name="content">
                 <h1>Search Job Listings</h1>
                 <hr />
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not freelancerMBean.correct}"/>
                 <h:form>
                     <h:panelGrid columns="3" border = "5"
-                                    cellpadding = "15" cellspacing = "10">
+                                    cellpadding = "15" cellspacing = "10"
+                                    rendered="#{freelancerMBean.correct}" >
                         Search Jobs By Keyword: 
-                        <h:inputText value="#{jobMBean.search}"/>
+                        <h:inputText value="#{jobMBean.search}" />
                         <h:commandButton action="search_jobs_by_keyword" value="Search By Keyword"/>
                         Search Jobs By ID: 
                         <h:inputText value="#{jobMBean.id}"/>

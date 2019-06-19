@@ -11,9 +11,12 @@
             <ui:define name="content">
                 <h1>Jobs assigned to you</h1>
                 <hr />
+                <h:outputText value="Unauthorised Access"
+                                  rendered="#{not freelancerMBean.correct}"/>
                 <h3>
                     <h:dataTable value="#{freelancerMBean.jobAssToMe()}" 
-                                 var="jobs" border="1" cellpadding="10">
+                                 var="jobs" border="1" cellpadding="10"
+                                 rendered="#{freelancerMBean.correct}" >
                         <h:column>
                             <f:facet name="header">ID</f:facet>
                                 #{jobs.id}
