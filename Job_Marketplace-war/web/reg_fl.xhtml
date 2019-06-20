@@ -35,8 +35,9 @@
                             <f:validateLength minimum="1" maximum="20"/>
                         </h:inputText>
                         <h:outputText value="Password" />
-                        <h:inputText value="#{registerFreelancerMBean.password}" size="10" required="true">
-                        </h:inputText>
+                        <h:inputSecret value="#{registerFreelancerMBean.password}" size="10" required="true">
+                            <f:validator validatorId="passvalidator"/>
+                        </h:inputSecret>
                     </h:panelGrid>
 
                     <h:panelGrid columns="3">
