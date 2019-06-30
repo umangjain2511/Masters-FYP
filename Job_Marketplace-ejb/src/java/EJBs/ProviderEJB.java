@@ -124,4 +124,20 @@ public class ProviderEJB implements ProviderRemoteEJB {
         int rowsUpdated3 = query4.executeUpdate();
     }
     
+    @Override
+    public boolean changePass(String old_password, String new_password, String username) {
+        boolean pass_set = false;
+        Query query = em.createNamedQuery("Provider.findByUsername").setParameter("username", username);
+        Provider prov = (Provider)query.getResultList().get(0);
+        String pass = prov.getPassword();
+        if(pass.equals(old_password)){
+            Query query1 = em.createQuery("UPDATE Provider p SET p.password=:new_password WHERE p.username=:username");            
+            query1.setParameter("new_password", new_password);
+            query1.setParameter("username", username);
+            int rowsUpdated3 = query1.executeUpdate();
+            pass_set=true;
+        }
+        return pass_set;
+    }
+    
 }

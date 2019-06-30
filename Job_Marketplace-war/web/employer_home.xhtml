@@ -14,7 +14,7 @@
                     <hr/>
                     <h:outputText value="Invalid userid or password"
                                   rendered="#{not providerMBean.correct}"/>
-                    <h:panelGrid columns="3" border = "5"
+                    <h:panelGrid columns="2" border = "5"
                                     cellpadding = "15" cellspacing = "10">
                         <h:commandButton action="create_job" value="Create new job"
                                          rendered="#{providerMBean.correct}"/>
@@ -23,7 +23,9 @@
                         <h:commandButton action="ass_job" value="Assigned Jobs"
                                          rendered="#{providerMBean.correct}"/>
                         <h:commandButton action="sh_job_app" value="Show job applicants"
-                                         rendered="#{providerMBean.correct}"/>                      
+                                         rendered="#{providerMBean.correct}"/>   
+                        <h:commandButton action="emp_chg_pass" value="Change Password"
+                                         rendered="#{providerMBean.correct}"/>
                         <h:commandButton action="index" value="Try again"
                                          rendered="#{not providerMBean.correct}"/>
                         <h:commandButton action="index" value="Logout">
